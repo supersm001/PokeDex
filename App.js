@@ -18,6 +18,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
+
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
