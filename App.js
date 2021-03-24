@@ -13,10 +13,22 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar hidden={true} />
       <View style={styles.mainPanel}>
-        <View style={styles.interface}></View>
+        <View style={styles.interface}>
+          <View style={styles.dataFrame}>
+            <View style={styles.display}>
+              <View style={styles.displayPart}></View>
+              <View style={styles.displayPart1}></View>
+              <View style={styles.displayPart2}></View>
+              <View style={styles.displayPart3}></View>
+              <View style={styles.displayPart4}></View>
+            </View>
+          </View>
+          <View style={styles.controlFrame}></View>
+        </View>
         <View style={styles.interfacePart}></View>
         <View style={styles.interfacePart1}></View>
         <View style={styles.interfacePart2}></View>
+
       </View>
       <View style={styles.foldClip}></View>
       <View style={styles.foldClip1}></View>
@@ -106,6 +118,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     zIndex: 2,
     backgroundColor: '#d50000',
+    //alignItems: 'center',
+    //justifyContent: 'center'
   },
   interfacePart: {
     height: '10%',
@@ -137,6 +151,73 @@ const styles = StyleSheet.create({
     backgroundColor: '#d50000',
     borderRadius: 150,
   },
+  dataFrame: {
+    height: '60%',
+    width: '90%',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  controlFrame: {
+    height: '40%',
+    width: '90%',
+    backgroundColor: 'transparent',
+    borderBottomLeftRadius: 50,
+  },
+  display: {
+    height: '60%',
+    width: '80%',
+    backgroundColor: 'purple',
+    borderRadius: 20,
+    overflow: 'hidden'
+  },
+  displayPart: {
+    position: 'absolute',
+    height: '50%',
+    width: '50%',
+    backgroundColor: '#d50000',
+    transform: [
+      { rotateX: "50deg" },
+      { rotateZ: "50deg" }
+    ],
+    left: '-25%',
+    top: '70%'
+  },
+  displayPart1: {
+    position: 'absolute',
+    height: '5%',
+    width: '5%',
+    backgroundColor: '#d50000',
+    top: '69%',
+    left: '-4%'
+  },
+  displayPart2: {
+    position: 'absolute',
+    height: '4%',
+    width: '4%',
+    backgroundColor: '#d50000',
+    top: '96%',
+    left: '27%'
+  },
+  displayPart3: {
+    position: 'absolute',
+    height: '8%',
+    width: '8%',
+    backgroundColor: 'purple',
+    top: '65%',
+    left: '0%',
+    borderRadius: 50
+  },
+  displayPart4: {
+    position: 'absolute',
+    height: '8%',
+    width: '8%',
+    backgroundColor: 'purple',
+    top: '92%',
+    left: '26%',
+    borderRadius: 100
+
+  }
 });
 
 export default App;
