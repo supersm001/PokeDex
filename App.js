@@ -1,18 +1,14 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  StatusBar,
-  ScrollView,
-  View,
-  Text,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, StatusBar, View, Image} from 'react-native';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar hidden={true} />
       <View style={styles.mainPanel}>
+        <View style={styles.bigButton}>
+          <View style={styles.bigButtonPart}></View>
+        </View>
         <View style={styles.interface}>
           <View style={styles.dataFrame}>
             <View style={styles.display}>
@@ -21,6 +17,21 @@ const App = () => {
               <View style={styles.displayPart2}></View>
               <View style={styles.displayPart3}></View>
               <View style={styles.displayPart4}></View>
+              <View style={styles.dot1}></View>
+              <View style={styles.dot2}></View>
+              <View style={styles.redButton}></View>
+              <View style={styles.speakerGrill1}></View>
+              <View style={styles.speakerGrill2}></View>
+              <View style={styles.speakerGrill3}></View>
+              <View style={styles.speakerGrill4}></View>
+              <View style={styles.speakerGrill5}></View>
+              <View style={styles.speakerGrill6}></View>
+              <View style={styles.OutputScreen}>
+                <Image
+                  source={require('./assets/images/pikachu.png')}
+                  style={styles.OutputScreenImage}
+                />
+              </View>
             </View>
           </View>
           <View style={styles.controlFrame}></View>
@@ -28,7 +39,6 @@ const App = () => {
         <View style={styles.interfacePart}></View>
         <View style={styles.interfacePart1}></View>
         <View style={styles.interfacePart2}></View>
-
       </View>
       <View style={styles.foldClip}></View>
       <View style={styles.foldClip1}></View>
@@ -51,6 +61,25 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderBottomLeftRadius: 50,
   },
+  bigButton: {
+    height: '15%',
+    width: '27%',
+    position: 'absolute',
+    top: '2%',
+    left: '7%',
+    backgroundColor: 'white',
+    borderRadius: 100,
+    elevation: 10,
+  },
+  bigButtonPart: {
+    flex: 1,
+    margin: '10%',
+    borderWidth: 0.1,
+    backgroundColor: 'lightblue',
+    borderRadius: 100,
+    elevation: 30,
+  },
+
   foldClip: {
     position: 'absolute',
     height: '10%',
@@ -151,12 +180,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#d50000',
     borderRadius: 150,
   },
+
   dataFrame: {
     height: '60%',
     width: '90%',
     backgroundColor: 'transparent',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   controlFrame: {
     height: '40%',
@@ -167,21 +197,20 @@ const styles = StyleSheet.create({
   display: {
     height: '60%',
     width: '80%',
-    backgroundColor: 'purple',
+    backgroundColor: '#9e9e9e',
     borderRadius: 20,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   displayPart: {
     position: 'absolute',
     height: '50%',
     width: '50%',
     backgroundColor: '#d50000',
-    transform: [
-      { rotateX: "50deg" },
-      { rotateZ: "50deg" }
-    ],
+    transform: [{rotateX: '50deg'}, {rotateZ: '50deg'}],
     left: '-25%',
-    top: '70%'
+    top: '70%',
   },
   displayPart1: {
     position: 'absolute',
@@ -189,7 +218,7 @@ const styles = StyleSheet.create({
     width: '5%',
     backgroundColor: '#d50000',
     top: '69%',
-    left: '-4%'
+    left: '-4%',
   },
   displayPart2: {
     position: 'absolute',
@@ -197,27 +226,127 @@ const styles = StyleSheet.create({
     width: '4%',
     backgroundColor: '#d50000',
     top: '96%',
-    left: '27%'
+    left: '27%',
   },
   displayPart3: {
     position: 'absolute',
     height: '8%',
     width: '8%',
-    backgroundColor: 'purple',
+    backgroundColor: '#9e9e9e',
     top: '65%',
     left: '0%',
-    borderRadius: 50
+    borderRadius: 50,
   },
   displayPart4: {
     position: 'absolute',
     height: '8%',
     width: '8%',
-    backgroundColor: 'purple',
+    backgroundColor: '#9e9e9e',
     top: '92%',
     left: '26%',
-    borderRadius: 100
-
-  }
+    borderRadius: 100,
+  },
+  OutputScreen: {
+    height: '60%',
+    width: '85%',
+    backgroundColor: 'white',
+    top: '-8%',
+    borderWidth: 2,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 2,
+  },
+  OutputScreenImage: {
+    flex: 1,
+    borderRadius: 15,
+    resizeMode: 'stretch',
+  },
+  dot1: {
+    height: '5%',
+    width: '4%',
+    position: 'absolute',
+    top: '3%',
+    left: '45%',
+    backgroundColor: 'red',
+    borderWidth: 1,
+    borderRadius: 100,
+  },
+  dot2: {
+    height: '5%',
+    width: '4%',
+    position: 'absolute',
+    top: '3%',
+    left: '55%',
+    backgroundColor: 'red',
+    borderWidth: 1,
+    borderRadius: 100,
+  },
+  redButton: {
+    height: '14%',
+    width: '10%',
+    position: 'absolute',
+    top: '80%',
+    left: '30%',
+    backgroundColor: 'red',
+    borderWidth: 0.5,
+    borderRadius: 100,
+    elevation: 5,
+  },
+  speakerGrill1: {
+    height: '2%',
+    width: '12%',
+    position: 'absolute',
+    top: '85%',
+    left: '65%',
+    backgroundColor: '#616161',
+    borderWidth: 1,
+  },
+  speakerGrill2: {
+    height: '2%',
+    width: '12%',
+    position: 'absolute',
+    top: '89%',
+    left: '65%',
+    backgroundColor: '#616161',
+    borderWidth: 1,
+  },
+  speakerGrill3: {
+    height: '2%',
+    width: '12%',
+    position: 'absolute',
+    top: '93%',
+    left: '65%',
+    backgroundColor: '#616161',
+    borderWidth: 1,
+  },
+  speakerGrill4: {
+    height: '2%',
+    width: '12%',
+    position: 'absolute',
+    top: '85%',
+    left: '79%',
+    backgroundColor: '#616161',
+    borderWidth: 1,
+  },
+  speakerGrill5: {
+    height: '2%',
+    width: '12%',
+    position: 'absolute',
+    top: '89%',
+    left: '79%',
+    backgroundColor: '#616161',
+    borderWidth: 1,
+  },
+  speakerGrill6: {
+    height: '2%',
+    width: '12%',
+    position: 'absolute',
+    top: '93%',
+    left: '79%',
+    backgroundColor: '#616161',
+    borderWidth: 1,
+  },
 });
 
 export default App;
