@@ -18,10 +18,6 @@ const App = () => {
           <View style={styles.dataFrame}>
             <View style={styles.display}>
               <View style={styles.displayPart}></View>
-              <View style={styles.displayPart1}></View>
-              <View style={styles.displayPart2}></View>
-              <View style={styles.displayPart3}></View>
-              <View style={styles.displayPart4}></View>
               <View style={styles.dot1}></View>
               <View style={styles.dot2}></View>
               <View style={styles.redButton}></View>
@@ -41,6 +37,38 @@ const App = () => {
           </View>
           <View style={styles.controlFrame}>
             <View style={styles.blueButton}></View>
+            <View style={styles.capsulebutton1}></View>
+            <View style={styles.capsulebutton2}></View>
+            <View style={styles.rankBoard}>
+              <View style={styles.innerRankBoard}></View>
+            </View>
+            <View style={styles.joystick}>
+              <View style={styles.joysticPart1}>
+                <View style={styles.joystickButton1}>
+                  <View style={styles.joystickButton1Part}></View>
+                </View>
+              </View>
+              <View style={styles.joysticPart2}>
+                <View style={styles.joystickButton2}>
+                  <View style={styles.joystickButton2Part}></View>
+                </View>
+              </View>
+              <View style={styles.joysticPart3}>
+                <View style={styles.joystickButton3}>
+                  <View style={styles.joystickButton3Part}></View>
+                </View>
+              </View>
+              <View style={styles.joysticPart4}>
+                <View style={styles.joystickButton4}>
+                  <View style={styles.joystickButton4Part}></View>
+                </View>
+              </View>
+              <View style={styles.joysticPart5}>
+
+              </View>
+
+
+            </View>
           </View>
         </View>
         <View style={styles.interfacePart}></View>
@@ -187,8 +215,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     zIndex: 2,
     backgroundColor: '#d50000',
-    //alignItems: 'center',
-    //justifyContent: 'center'
+
   },
   interfacePart: {
     height: '10%',
@@ -245,6 +272,164 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     elevation: 10,
   },
+  capsulebutton1: {
+    height: metric * 3,
+    width: metric * 11,
+    borderRadius: 10,
+    position: 'absolute',
+    top: "10%",
+    left: '30%',
+    backgroundColor: 'green',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  capsulebutton2: {
+    height: metric * 3,
+    width: metric * 11,
+    borderRadius: 10,
+    position: 'absolute',
+    top: "10%",
+    left: '55%',
+    backgroundColor: 'orange',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  rankBoard: {
+    height: metric * 12,
+    width: metric * 22,
+    borderRadius: 20,
+    position: 'absolute',
+    top: "40%",
+    left: '8%',
+    borderWidth: 0.3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#126e82',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 10,
+  },
+  innerRankBoard: {
+    height: '60%',
+    width: '60%',
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  joystick: {
+    height: metric * 18,
+    width: metric * 18,
+    borderRadius: 0,
+    position: 'absolute',
+    top: "30%",
+    right: '8%',
+    backgroundColor: '#d50000',
+  },
+  joysticPart1: {
+    height: '33%',
+    width: '33%',
+    backgroundColor: '#252525',
+    position: 'absolute',
+    top: '0%',
+    left: '33%',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  joysticPart2: {
+    height: '33%',
+    width: '33%',
+    backgroundColor: '#252525',
+    position: 'absolute',
+    top: '33%',
+    left: '0%',
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  joysticPart3: {
+    height: '33%',
+    width: '33%',
+    backgroundColor: '#252525',
+    position: 'absolute',
+    top: '33%',
+    left: '66%',
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  joysticPart4: {
+    height: '33%',
+    width: '33%',
+    backgroundColor: '#252525',
+    position: 'absolute',
+    top: '66%',
+    left: '33%',
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  joysticPart5: {
+    height: '33%',
+    width: '33%',
+    backgroundColor: '#252525',
+    position: 'absolute',
+    top: '33%',
+    left: '33%',
+  },
+  joystickButton1: {
+    height: '50%',
+    width: '50%',
+    backgroundColor: 'black',
+    transform: [{ rotateX: '45deg' }, { rotateZ: '45deg' }],
+    overflow: 'hidden'
+  },
+  joystickButton2: {
+    height: '50%',
+    width: '50%',
+    backgroundColor: 'black',
+    transform: [{ rotateX: '45deg' }, { rotateZ: '45deg' }],
+  },
+  joystickButton3: {
+    height: '50%',
+    width: '50%',
+    backgroundColor: 'black',
+    transform: [{ rotateX: '45deg' }, { rotateZ: '45deg' }],
+  },
+  joystickButton4: {
+    height: '50%',
+    width: '50%',
+    backgroundColor: 'black',
+    transform: [{ rotateX: '45deg' }, { rotateZ: '45deg' }],
+  },
+  joystickButton1Part: {
+    height: '150%',
+    width: '150%',
+    position: 'absolute',
+    top: '14%',
+    left: '35%',
+    backgroundColor: 'yellow',
+    transform: [{ rotateX: '38deg' }, { rotateZ: '38deg' }],
+  },
   display: {
     height: '60%',
     width: '80%',
@@ -263,40 +448,7 @@ const styles = StyleSheet.create({
     left: '-25%',
     top: '70%',
   },
-  displayPart1: {
-    position: 'absolute',
-    height: '5%',
-    width: '5%',
-    backgroundColor: '#d50000',
-    top: '69%',
-    left: '-4%',
-  },
-  displayPart2: {
-    position: 'absolute',
-    height: '4%',
-    width: '3%',
-    backgroundColor: '#d50000',
-    top: '96%',
-    left: '28%',
-  },
-  displayPart3: {
-    position: 'absolute',
-    height: '8%',
-    width: '8%',
-    backgroundColor: '#9e9e9e',
-    top: '65%',
-    left: '0%',
-    borderRadius: 50,
-  },
-  displayPart4: {
-    position: 'absolute',
-    height: metric * 2,
-    width: metric * 2,
-    backgroundColor: '#9e9e9e',
-    top: '93%',
-    left: '28%',
-    borderRadius: 100,
-  },
+
   OutputScreen: {
     height: '60%',
     width: '85%',
