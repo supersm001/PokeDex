@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -21,27 +23,47 @@ const Screen2 = ({navigation}) => {
       <View style={styles.mainPanel}>
         <View style={styles.interface}>
           <View style={styles.dataFrame}>
-            <View
-              style={{
-                height: '45%',
-                width: '85%',
-                backgroundColor: 'yellow',
-              }}></View>
-            <View
-              style={{
-                height: '30%',
-                width: '85%',
-                backgroundColor: 'purple',
-              }}></View>
+            <View style={styles.displayInfo}></View>
+            <View style={styles.displayInfo2}>
+              <View
+                style={{height: '50%', width: '99.9%', flexDirection: 'row'}}>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+              </View>
+              <View
+                style={{height: '50%', width: '99.9%', flexDirection: 'row'}}>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+                <View style={styles.minDisplay}></View>
+              </View>
+            </View>
           </View>
           <View style={styles.controlFrame}>
-            <View
-              style={{
-                height: '60%',
-                width: '70%',
-                backgroundColor: 'green',
-                borderBottomRightRadius: 50,
-              }}></View>
+            <View style={styles.lilButton1}></View>
+            <View style={styles.lilButton2}></View>
+            <View style={styles.playButton}>
+              <EntypoIcon
+                name="triangle-left"
+                size={50}
+                color="#7f0000"
+                style={{left: -4}}
+              />
+            </View>
+            <View style={styles.capsulebutton1}></View>
+            <View style={styles.capsulebutton2}></View>
+            <View style={styles.arrowButtonLeft}>
+              <AntDesignIcon name="caretleft" size={30} color="#7f0000" />
+            </View>
+            <View style={styles.arrowButtonRight}>
+              <AntDesignIcon name="caretright" size={30} color="#7f0000" />
+            </View>
+            <View style={styles.bigButton}></View>
+            <View style={styles.bigButton2}></View>
           </View>
         </View>
         <View style={styles.interfacePart}></View>
@@ -187,6 +209,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
+  displayInfo: {
+    height: '45%',
+    width: '85%',
+    backgroundColor: '#64dd17',
+    borderRadius: 15,
+    borderWidth: 1,
+    elevation: 50,
+  },
+  displayInfo2: {
+    height: '30%',
+    width: '85%',
+    // backgroundColor: 'purple',
+  },
+  minDisplay: {
+    height: '99%',
+    width: '20%',
+    backgroundColor: 'blue',
+    borderWidth: 1,
+    borderRadius: 10,
+    elevation: 10,
+  },
   controlFrame: {
     height: '30%',
     width: '90%',
@@ -195,6 +238,129 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  lilButton1: {
+    height: metric * 2.5,
+    width: metric * 2.5,
+    position: 'absolute',
+    top: '0%',
+    left: '10%',
+    backgroundColor: '#1b5e20',
+    borderWidth: 2,
+    borderRadius: 100,
+    elevation: 10,
+  },
+  lilButton2: {
+    height: metric * 2.5,
+    width: metric * 2.5,
+    position: 'absolute',
+    top: '0%',
+    left: '20%',
+    backgroundColor: 'yellow',
+    borderWidth: 2,
+    borderRadius: 100,
+    elevation: 10,
+  },
+  capsulebutton1: {
+    height: metric * 3,
+    width: metric * 11,
+    borderRadius: 10,
+    position: 'absolute',
+    top: '0%',
+    left: '40%',
+    borderWidth: 1,
+    backgroundColor: 'green',
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  capsulebutton2: {
+    height: metric * 3,
+    width: metric * 11,
+    borderRadius: 10,
+    borderWidth: 1,
+    position: 'absolute',
+    top: '0%',
+    left: '70%',
+    backgroundColor: 'orange',
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  arrowButtonLeft: {
+    height: metric * 7,
+    width: metric * 8,
+    backgroundColor: '#a1887f',
+    borderWidth: 2,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    elevation: 10,
+    position: 'absolute',
+    top: '20%',
+    left: '8%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  arrowButtonRight: {
+    height: metric * 7,
+    width: metric * 8,
+    backgroundColor: '#a1887f',
+    borderWidth: 2,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    elevation: 10,
+    position: 'absolute',
+    top: '20%',
+    left: metric * 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  playButton: {
+    height: metric * 7,
+    width: metric * 7,
+    position: 'absolute',
+    top: '20%',
+    left: '75%',
+    backgroundColor: '#ffc400',
+    borderWidth: 2,
+    borderRadius: 100,
+    elevation: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bigButton: {
+    height: metric * 7,
+    width: metric * 18,
+    borderRadius: 15,
+    position: 'absolute',
+    top: '60%',
+    left: '13%',
+    borderWidth: 1,
+    backgroundColor: '#ffc400',
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 20,
+  },
+  bigButton2: {
+    height: metric * 7,
+    width: metric * 18,
+    borderRadius: 15,
+    position: 'absolute',
+    top: '60%',
+    left: '50%',
+    borderWidth: 1,
+    backgroundColor: '#ffc400',
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 20,
   },
 });
 
