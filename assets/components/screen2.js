@@ -23,7 +23,9 @@ const Screen2 = ({navigation}) => {
       <View style={styles.mainPanel}>
         <View style={styles.interface}>
           <View style={styles.dataFrame}>
-            <View style={styles.displayInfo}></View>
+            <View style={styles.displayInfo}>
+              <Text style={styles.displayText}>Pikachu</Text>
+            </View>
             <View style={styles.displayInfo2}>
               <View
                 style={{height: '50%', width: '99.9%', flexDirection: 'row'}}>
@@ -213,9 +215,17 @@ const styles = StyleSheet.create({
     height: '45%',
     width: '85%',
     backgroundColor: '#64dd17',
-    borderRadius: 15,
-    borderWidth: 1,
-    elevation: 50,
+    borderRadius: 20,
+    borderWidth: 2,
+    elevation: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  displayText: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    elevation: 10,
   },
   displayInfo2: {
     height: '30%',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,14 +7,29 @@ import {
   Text,
   Image,
   Dimensions,
+  ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
+import {SendOTP} from './apis';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 const metric = height / 100;
 const Screen1 = ({navigation}) => {
+  const [rank, setRank] = useState(25);
+  const [loading, setLoading] = useState(false);
+  function arrowUp() {
+    if (rank != 1) {
+      setRank(rank - 1);
+    }
+  }
+  function arrowDown() {
+    if (rank != 887) {
+      setRank(rank + 1);
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar hidden={true} />
@@ -40,9 +55,25 @@ const Screen1 = ({navigation}) => {
               <View style={styles.speakerGrill6}></View>
               <View style={styles.OutputScreen}>
                 <Image
-                  source={require('../images/pikachu.png')}
+                  onLoadStart={() => {
+                    setLoading(true);
+                  }}
+                  onLoadEnd={() => setLoading(false)}
+                  source={{
+                    uri:
+                      'https://pokeres.bastionbot.org/images/pokemon/' +
+                      rank +
+                      '.png',
+                  }}
                   style={styles.OutputScreenImage}
                 />
+                <View style={{position: 'absolute', top: '45%', left: '45%'}}>
+                  <ActivityIndicator
+                    size={50}
+                    color="blue"
+                    animating={loading}
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -52,12 +83,12 @@ const Screen1 = ({navigation}) => {
             <TouchableOpacity style={styles.capsulebutton2}></TouchableOpacity>
             <View style={styles.rankBoard}>
               <View style={styles.innerRankBoard}>
-                <Text style={styles.rankText}>26</Text>
+                <Text style={styles.rankText}>{rank}</Text>
               </View>
             </View>
             <View style={styles.joystick}>
               <View style={styles.joysticPart1}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={arrowUp}>
                   <AntDesignIcon name="caretup" size={30} color="gray" />
                 </TouchableOpacity>
               </View>
@@ -72,7 +103,7 @@ const Screen1 = ({navigation}) => {
                 </TouchableOpacity>
               </View>
               <View style={styles.joysticPart4}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={arrowDown}>
                   <AntDesignIcon name="caretdown" size={30} color="gray" />
                 </TouchableOpacity>
               </View>
@@ -115,6 +146,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderBottomLeftRadius: 50,
   },
+
+  //             voice assistence Indicator button ***************************
+
   bigButton: {
     height: metric * 15,
     width: metric * 15,
@@ -133,6 +167,9 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     elevation: 30,
   },
+
+  //          three small corner buttons ************************************
+
   lilButton1: {
     height: metric * 3,
     width: metric * 3,
@@ -278,22 +315,28 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderBottomLeftRadius: 50,
   },
+
+  //        Blue button ******************************************
+
   blueButton: {
     height: metric * 10,
     width: metric * 10,
     position: 'absolute',
-    top: '-10%',
-    left: '15%',
+    top: '0%',
+    left: '10%',
     backgroundColor: '#0d47a1',
     borderRadius: 100,
     elevation: 10,
   },
+
+  //    capsules button *******************************************
+
   capsulebutton1: {
     height: metric * 3,
     width: metric * 11,
     borderRadius: 10,
     position: 'absolute',
-    top: '0%',
+    top: '5%',
     left: '40%',
     backgroundColor: 'green',
     shadowColor: '#000000',
@@ -307,7 +350,7 @@ const styles = StyleSheet.create({
     width: metric * 11,
     borderRadius: 10,
     position: 'absolute',
-    top: '0%',
+    top: '5%',
     left: '70%',
     backgroundColor: 'orange',
     shadowColor: '#000000',
@@ -351,6 +394,9 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
   },
+
+  // joy stick *************************************************
+
   joystick: {
     height: metric * 18,
     width: metric * 18,
@@ -418,8 +464,8 @@ const styles = StyleSheet.create({
   },
 
   display: {
-    height: '60%',
-    width: '80%',
+    height: '90%',
+    width: '90%',
     backgroundColor: '#9e9e9e',
     borderRadius: 20,
     overflow: 'hidden',
@@ -431,16 +477,16 @@ const styles = StyleSheet.create({
     height: '50%',
     width: '50%',
     backgroundColor: '#d50000',
-    transform: [{rotateX: '50deg'}, {rotateZ: '50deg'}],
-    left: '-25%',
-    top: '70%',
+    transform: [{rotateX: '70deg'}, {rotateZ: '70deg'}],
+    left: '-38%',
+    top: '69%',
   },
 
   OutputScreen: {
-    height: '60%',
-    width: '85%',
+    height: '75%',
+    width: '90%',
     backgroundColor: 'white',
-    top: '-8%',
+    top: '-6%',
     borderWidth: 2,
     borderRadius: 15,
     alignItems: 'center',
@@ -451,13 +497,16 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     borderRadius: 15,
-    resizeMode: 'stretch',
+    resizeMode: 'contain',
   },
+
+  // display indicator dots *******************************************
+
   dot1: {
     height: metric * 1.5,
     width: metric * 1.5,
     position: 'absolute',
-    top: '3%',
+    top: '2%',
     left: '45%',
     backgroundColor: 'red',
     borderWidth: 1,
@@ -467,18 +516,21 @@ const styles = StyleSheet.create({
     height: metric * 1.5,
     width: metric * 1.5,
     position: 'absolute',
-    top: '3%',
+    top: '2%',
     left: '55%',
     backgroundColor: 'red',
     borderWidth: 1,
     borderRadius: 100,
   },
+
+  // red button *******************************************************
+
   redButton: {
-    height: metric * 5,
-    width: metric * 5,
+    height: metric * 6,
+    width: metric * 6,
     position: 'absolute',
-    top: '80%',
-    left: '30%',
+    top: '84%',
+    left: '20%',
     backgroundColor: 'red',
     borderWidth: 0.5,
     borderRadius: 100,
@@ -486,55 +538,55 @@ const styles = StyleSheet.create({
   },
   speakerGrill1: {
     height: '2%',
-    width: '12%',
+    width: '15%',
     position: 'absolute',
     top: '85%',
-    left: '65%',
+    left: '50%',
     backgroundColor: '#616161',
     borderWidth: 1,
   },
   speakerGrill2: {
     height: '2%',
-    width: '12%',
+    width: '15%',
     position: 'absolute',
     top: '89%',
-    left: '65%',
+    left: '50%',
     backgroundColor: '#616161',
     borderWidth: 1,
   },
   speakerGrill3: {
     height: '2%',
-    width: '12%',
+    width: '15%',
     position: 'absolute',
     top: '93%',
-    left: '65%',
+    left: '50%',
     backgroundColor: '#616161',
     borderWidth: 1,
   },
   speakerGrill4: {
     height: '2%',
-    width: '12%',
+    width: '15%',
     position: 'absolute',
     top: '85%',
-    left: '79%',
+    left: '70%',
     backgroundColor: '#616161',
     borderWidth: 1,
   },
   speakerGrill5: {
     height: '2%',
-    width: '12%',
+    width: '15%',
     position: 'absolute',
     top: '89%',
-    left: '79%',
+    left: '70%',
     backgroundColor: '#616161',
     borderWidth: 1,
   },
   speakerGrill6: {
     height: '2%',
-    width: '12%',
+    width: '15%',
     position: 'absolute',
     top: '93%',
-    left: '79%',
+    left: '70%',
     backgroundColor: '#616161',
     borderWidth: 1,
   },
