@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,6 +9,8 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
+import {getPokeData} from '../components/apis';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/AntDesign';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
@@ -17,6 +19,49 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 const metric = height / 100;
 const Screen2 = ({navigation}) => {
+  const [rank, setRank] = useState(25);
+  const [name, setName] = useState('');
+  const [Height, setHeight] = useState('');
+  const [Weight, setWeight] = useState('');
+  const [species, setSpecies] = useState('');
+  const [types, setTypes] = useState();
+  const [abilities, setAbilities] = useState();
+  const [moves, setMoves] = useState();
+
+  const [aniPicFront, setAniPicFront] = useState('');
+  const [aniPicFront2, setAniPicFront2] = useState('');
+  const [aniPicBack, setAniPicBack] = useState('');
+  const [aniPicBack2, setAniPicBack2] = useState('');
+
+  const [picFront, setPicFront] = useState('');
+  const [picFront2, setPicFront2] = useState('');
+  const [picBack, setPicBack] = useState('');
+  const [picBack2, setPicBack2] = useState('');
+
+  const [picDreamWorld, setPicDreamWorld] = useState('');
+  const [picOfficial, setPicOfficial] = useState('');
+
+  useEffect(() => {
+    let unsubscribe = navigation.addListener('focus', () => {
+      // console.log('screen2');
+      getRank();
+    });
+    return unsubscribe;
+  }, [navigation]);
+
+  async function getRank() {
+    const R = await AsyncStorage.getItem('rank');
+    setRank(R);
+    const res = await getPokeData(R);
+    // console.log(res.name);
+    // console.log(res.height);
+    // console.log(res.weight);
+    // console.log(res.species);
+    // console.log(res.types);
+    // console.log(res.abilities);
+    // console.log(res.moves);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar hidden={true} />
@@ -24,7 +69,7 @@ const Screen2 = ({navigation}) => {
         <View style={styles.interface}>
           <View style={styles.dataFrame}>
             <View style={styles.displayInfo}>
-              <Text style={styles.displayText}>Pikachu</Text>
+              <Text style={styles.displayText}>pikachu</Text>
             </View>
             <View style={styles.displayInfo2}>
               <View

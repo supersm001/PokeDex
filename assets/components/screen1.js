@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {SendOTP} from './apis';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
@@ -19,15 +20,33 @@ const metric = height / 100;
 const Screen1 = ({navigation}) => {
   const [rank, setRank] = useState(25);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    StoreRank(rank.toString());
+  }, []);
+
+  // useEffect(() => {
+  //   let unsubscribe = navigation.addListener('focus', () => {
+  //     console.log('screen1');
+  //   });
+  //   return unsubscribe;
+  // }, [navigation]);
+
   function arrowUp() {
     if (rank != 1) {
       setRank(rank - 1);
+      StoreRank(rank.toString());
     }
   }
   function arrowDown() {
     if (rank != 887) {
       setRank(rank + 1);
+      StoreRank(rank.toString());
     }
+  }
+
+  async function StoreRank(rank) {
+    await AsyncStorage.setItem('rank', rank);
   }
 
   return (
