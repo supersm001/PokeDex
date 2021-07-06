@@ -9,8 +9,6 @@ import {
   Dimensions,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Screen1 from './assets/components/screen1';
 import Screen2 from './assets/components/screen2';
